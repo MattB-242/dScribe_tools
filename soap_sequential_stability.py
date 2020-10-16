@@ -98,7 +98,7 @@ rcut = 20.0
 #Make descriptor list
 descriptors = []
 for nmax in range(1,10):
-    soapgen = SOAP(species = species, rcut = rcut, nmax = nmax, lmax = lmax, periodic= True, sparse = False, rbf = 'polynomial')
+    soapgen = SOAP(species = species, rcut = rcut, nmax = nmax, lmax = lmax, periodic= True, sparse = False, rbf = 'gto')
     descriptors.append(soapgen.create(structure))
 
 
@@ -129,7 +129,7 @@ rcut = 20.0
 #Make descriptor list
 descriptors = []
 for lmax in range(1,10):
-    soapgen = SOAP(species = species, rcut = rcut, nmax = nmax, lmax = lmax, periodic= True, sparse = False, rbf = 'polynomial')
+    soapgen = SOAP(species = species, rcut = rcut, nmax = nmax, lmax = lmax, periodic= True, sparse = False, rbf = 'gto')
     descriptors.append(soapgen.create(structure))
 
 #Make comparison list
@@ -157,7 +157,7 @@ xax = []
 descriptors = []
 for rcut in np.linspace(2,20,30):
     xax.append(rcut)
-    soapgen = SOAP(species = species, rcut = rcut, nmax = nmax, lmax = lmax, periodic= True, sparse = False, rbf = 'polynomial')
+    soapgen = SOAP(species = species, rcut = rcut, nmax = nmax, lmax = lmax, periodic= True, sparse = False, rbf = 'gto')
     descriptors.append(soapgen.create(structure))
 
 #Make comparison list
