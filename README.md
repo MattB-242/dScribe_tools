@@ -11,5 +11,5 @@ The various scripts in this toolset are intended to test the functionality of th
 (2) SOAP Kernel comparison value between the two different input files using the REMatch and Average Kernel methodologies (with fixed alpha, gamma, threshold) across a range of r_cut, nmax, lmax
 (3) Difference between the first value in the first SOAP descriptor across a range of r_cut, nmax, lmax
 
-**soap_sequential_stabiity** compares soap descriptors run on a single input molecule at one value of n_max, l_max, r_cut with that of the next value. It outputs kernel value for the REMatch and Average Kernal methodologies. 
+**soap_sequential_stabiity** compares soap descriptors run on a single input molecule at one value of n_max, l_max, r_cut with that of the next value. It outputs plots of kernel value for each comparison for the REMatch and Average Kernel methodologies as line plots. The default setting of the radial basis function for calculations is Gaussian. Polynomial calculations need to be set directly in the code.
 
