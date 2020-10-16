@@ -87,11 +87,20 @@ for nmax in range(1,10):
 rs = len(soap_rcut)
 print(f"rows = {rs}")
 
+vl = len(soap_rcut[0])
+print(f'maximum vector length: {vl}')
+
+polymax = polytime[-1]
+gtomax = gtotime[-1]
+
+print(f'Maximum polynomial computation time over nmax: {polymax:.2}s')
+print(f'Maximum gaussian computation time over nmax: {gtomax:.2}s')
+
 plt.plot(xax, gtotime, label = 'Gaussian RBF')
 plt.plot(xax, polytime, label = 'Polynomial RBF')
 plt.xlabel('Number of radial basis functions')
 plt.ylabel('Computation time (s)')
-plt.title('lmax = 1, rcut = 10.0 A')
+plt.title(f'lmax = {lmax}, rcut = {rcut}')
 plt.legend()
 
 plt.savefig(outputdir+f"/{name}_time_lmax={lmax}_rcut={rcut}.png")
@@ -101,7 +110,7 @@ plt.plot(xax, gtocol, label = 'Gaussian RBF')
 plt.plot(xax, polycol, label = 'Polynomial RBF')
 plt.xlabel('Number of radial basis functions')
 plt.ylabel('Length of local descriptors')
-plt.title('lmax = 1, rcut = 10.0 A')
+plt.title(f'lmax = {lmax}, rcut = {rcut}')
 plt.legend()
 
 plt.savefig(outputdir+f"/{name}_coeffs_lmax={lmax}_rcut={rcut}.png")
@@ -133,8 +142,12 @@ for lmax in range(1,9):
         else:
             polycol.append(len(soap_rcut[0]))
             polytime.append(toc_1 - tic_1)
+            
+polymax = polytime[-1]
+gtomax = gtotime[-1]
 
-rs = len(soap_rcut)
+print(f'Maximum polynomial computation time over lmax: {polymax:.2}s')
+print(f'Maximum gaussian computation time over lmax: {gtomax:.2}s')
 
 plt.plot(xax, gtotime, label = 'Gaussian RBF')
 plt.plot(xax, polytime, label = 'Polynomial RBF')
@@ -150,7 +163,7 @@ plt.plot(xax, gtocol, label = 'Gaussian RBF')
 plt.plot(xax, polycol, label = 'Polynomial RBF')
 plt.xlabel('Degree of Spherical Harmonics')
 plt.ylabel('Length of Local Descriptor')
-plt.title('nmax = {nmax}, rcut = {rcut} A')
+plt.title(f'nmax = {nmax}, rcut = {rcut} A')
 plt.legend()
 
 plt.savefig(outputdir+f"/{name}_coeffs_nmax={nmax}_rcut={rcut}.png") 
@@ -184,6 +197,12 @@ for rcut in np.linspace(2,15,20):
             polycol.append(len(soap_rcut[0]))
             polytime.append(toc_1 - tic_1)
 
+polymax = polytime[-1]
+gtomax = gtotime[-1]
+
+print(f'Maximum polynomial computation time over rcut: {polymax:.2}s')
+print(f'Maximum gaussian computation time over rcut: {gtomax:.2}s')
+
 plt.plot(rcutax, gtotime, label = 'Gaussian RBF')
 plt.plot(rcutax, polytime, label = 'Polynomial RBF')
 plt.xlabel('r_cut (Angstroms)')
@@ -203,3 +222,5 @@ plt.legend()
 
 plt.savefig(outputdir+f"/{name}_coeffs_nmax={nmax}_lmax={lmax}.png")
 plt.cla()
+
+
